@@ -8,6 +8,7 @@ public class Fenetre extends JFrame{
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setTitle("SameGame");
+        this.setLayout(new BorderLayout());
         this.setVisible(true);
     }
 

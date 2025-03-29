@@ -8,7 +8,7 @@ public class MonPanelMap extends JPanel {
     public JButton definedMap = new JButton("DEFINED MAP");
     public JPanel panelBouton = new JPanel();
     public int choix = 1;
-    public Img imageMap = new Img();
+    public ImageMap imageMap = new ImageMap();
     public MonPanelMap(){
         
 
@@ -40,6 +40,7 @@ public class MonPanelMap extends JPanel {
         panelBouton.add(randomMap);
         panelBouton.add(definedMap);
 
+        
         imageMap.setOpaque(true);
         
         this.setLayout(new BorderLayout());

@@ -6,7 +6,7 @@ import java.awt.event.ComponentListener;
 import javax.swing.*;
 
 public class MonPanelTitre extends JPanel{
-    JLabel titre = new JLabel("SameGame !");
+    JLabel titre = new JLabel("SameGame");
     int nouvelleTaille;
 
     public MonPanelTitre (){
