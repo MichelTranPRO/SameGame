@@ -8,8 +8,8 @@ public class ImageMap extends JComponent {
 
     public ImageMap() {
         super();
-        this.definedMap = Toolkit.getDefaultToolkit().getImage("definedMap.png");
-        this.randomMap = Toolkit.getDefaultToolkit().getImage("randomMap.png");
+        this.definedMap = Toolkit.getDefaultToolkit().getImage("image/definedMap.png");
+        this.randomMap = Toolkit.getDefaultToolkit().getImage("image/randomMap.png");
         this.choix = 1;
     }
 

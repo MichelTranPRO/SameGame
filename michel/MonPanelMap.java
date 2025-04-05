@@ -1,20 +1,38 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 
 public class MonPanelMap extends JPanel {
-    public JButton randomMap = new JButton("RANDOM MAP");
-    public JButton definedMap = new JButton("DEFINED MAP");
-    public JPanel panelBouton = new JPanel();
-    public int choix = 1;
-    public ImageMap imageMap = new ImageMap();
+    private JButton randomMap;
+    private JButton definedMap;
+    private JPanel panelBouton;
+    private int choix;
+    private ImageMap imageMap;
+    private ConfigMap configuration; 
+    private char[][] choixMap;
+    private boolean statutRandom;
+    private boolean statutDefined;
+    private MaFenetre fenetreJeu;
+    private MaMatrice matriceGrille;
+
     public MonPanelMap(){
-        
+
+        this.configuration = new ConfigMap();
+        this.imageMap = new ImageMap();
+        this.choix = 1;
+        this.panelBouton = new JPanel();
+        this.definedMap = new JButton("DEFINED MAP");
+        this.randomMap = new JButton("RANDOM MAP");
+        this.fenetreJeu = new MaFenetre();
 
         panelBouton.setLayout(new FlowLayout(FlowLayout.CENTER, 10,10));
+
+        // RANDOM MAP 
         randomMap.setPreferredSize(new Dimension(200, 50));
-        randomMap.addMouseMotionListener(new MouseMotionListener() {
+        randomMap.addMouseMotionListener(new MouseMotionListener() { // changer image en fonction du bouton
             @Override
             public void mouseMoved(MouseEvent e) {
                 choix = 2;
@@ -25,8 +43,30 @@ public class MonPanelMap extends JPanel {
             }
         });
 
+        randomMap.addActionListener(new ActionListener(){ 
+            @Override
+            public void actionPerformed(ActionEvent e){
+                configuration.setChoix("random");
+                choixMap = configuration.getGrilleChoix();
+                System.out.println("randomMap Cliqué");
+                matriceGrille = new MaMatrice(10, 15, fenetreJeu, choixMap);
+
+                if (choixMap != null){
+                    fenetreJeu.setVisible(true);
+                for (int i = 0; i < choixMap.length; i++) {
+                    for (int j = 0; j < choixMap[i].length; j++) {
+                        System.out.print(choixMap[i][j] + " ");
+                    }
+                    System.out.println();
+                }
+                statutRandom = true;
+                }
+            }
+        });
+
+        // DEFINED MAP
         definedMap.setPreferredSize(new Dimension(200, 50));
-        definedMap.addMouseMotionListener(new MouseMotionListener() {
+        definedMap.addMouseMotionListener(new MouseMotionListener() { // changer image en fonction du bouton
             @Override
             public void mouseMoved(MouseEvent e) {
                 choix = 1;
@@ -37,9 +77,29 @@ public class MonPanelMap extends JPanel {
             }
         });
 
+        definedMap.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                configuration.setChoix("defined");
+                choixMap = configuration.getGrilleChoix();
+                System.out.println("definedmap Cliqué");
+                matriceGrille = new MaMatrice(10, 15, fenetreJeu, choixMap);
+
+                if (choixMap != null){
+                    fenetreJeu.setVisible(true);
+                    for (int i = 0; i < choixMap.length; i++) {
+                        for (int j = 0; j < choixMap[i].length; j++) {
+                            System.out.print(choixMap[i][j] + " ");
+                        }
+                        System.out.println();
+                    }
+                }
+                statutDefined = true;
+            }
+        });
+
         panelBouton.add(randomMap);
         panelBouton.add(definedMap);
-
         
         imageMap.setOpaque(true);
         
@@ -50,5 +110,19 @@ public class MonPanelMap extends JPanel {
 
 
     }
+    public char[][] getChoixGrille(char[][] grilleFinal) {
+        if (choixMap == null) {
+            System.out.println("Erreur : aucun choix de map n'a encore été fait");
+            return grilleFinal;
+        }
+    
+        for (int ligne = 0; ligne < 10; ligne++) {
+            for (int colonne = 0; colonne < 15; colonne++) {
+                grilleFinal[ligne][colonne] = choixMap[ligne][colonne];
+            }
+        }
+        return grilleFinal;
+    }
+  
     
 }
