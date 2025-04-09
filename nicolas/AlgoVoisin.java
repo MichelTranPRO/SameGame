@@ -1,5 +1,4 @@
 import java.awt.*;
-import java.lang.*;
 
 public class AlgoVoisin{
 	public static ObjetGrille[] getVoisinDirect(ObjetGrille[][] matrice, int x, int y){
@@ -56,7 +55,7 @@ public class AlgoVoisin{
 		comptAV+=1;
 		while(comptAV<allVoisin.length && allVoisin[parc]!=null){
 			int incrTemp = 0;
-			ObjetGrille[] tempVoisin = AlgoVoisin.getVoisinDirect(matrice, allVoisin[parc].getX(), allVoisin[parc].getY());
+			ObjetGrille[] tempVoisin = AlgoVoisin.getVoisinDirect(matrice, allVoisin[parc].getMyX(), allVoisin[parc].getMyY());
 			while(incrTemp<tempVoisin.length && tempVoisin[incrTemp]!=null){
 				if(!AlgoVoisin.contient(allVoisin,tempVoisin[incrTemp])){
 					allVoisin[comptAV]=tempVoisin[incrTemp];

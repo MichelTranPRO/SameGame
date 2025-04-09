@@ -1,16 +1,28 @@
 import java.awt.*;
-import java.lang.*;
 import javax.swing.*;
+import java.util.Random;
 
 public class MaMatrice{
 	private ObjetGrille[][] matr;
 
-	public MaMatrice(int hauteur, int largeur, MaFenetre fen){
+	public MaMatrice(int hauteur, int largeur, JFrame fen){
 		super();
+		Random graine = new Random();
+		Color couleur = Color.CYAN;
 		this.matr = new ObjetGrille[hauteur][largeur];
 		for(int ligne=0; ligne<hauteur; ligne+=1){
 			for(int col=0; col<largeur; col+=1){
-				this.matr[ligne][col] = new ObjetGrille(ligne,col,Color.CYAN);
+				int aleatoire = graine.nextInt(3);
+				if(aleatoire==0){
+					couleur=Color.CYAN;
+				}
+				else if(aleatoire==1){
+					couleur=Color.RED;
+				}
+				else if(aleatoire==2){
+					couleur=Color.GREEN;
+				}
+				this.matr[ligne][col] = new ObjetGrille(ligne,col,couleur);
 				fen.add(matr[ligne][col]);
 			}
 		}
