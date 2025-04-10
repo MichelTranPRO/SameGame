@@ -5,7 +5,7 @@ public class ObjetGrille extends JComponent{
 	private int x;
 	private int y;
 
-	public ObjetGrille(int x,int y,Color clr){
+	public ObjetGrille(int y,int x,Color clr){
 		super();
 		this.x=x;
 		this.y=y;
@@ -44,7 +44,22 @@ public class ObjetGrille extends JComponent{
 	      secondPinceau.setColor(this.getBackground());
 	      secondPinceau.fillRect(0, 0, this.getWidth(), this.getHeight());
 	    }
+
 	    secondPinceau.setColor(this.getClr());
-	    secondPinceau.fillRect(0, 0, this.getWidth(), this.getHeight());
+	    if(this.getClr()==Color.CYAN){
+		    secondPinceau.fillOval(0, 2, this.getWidth(), this.getHeight()-2);
+		}
+		else if(this.getClr()==Color.RED){
+			int[] xRuby = {10,0,this.getWidth()/2,this.getWidth(),this.getWidth()-10};
+			int[] yRuby = {2,10,this.getHeight(),10,2};
+		    secondPinceau.fillPolygon(xRuby,yRuby,5);
+		}
+		else if(this.getClr()==Color.GREEN){
+			int[] xEmeraude = {0,15,this.getWidth()-15,this.getWidth(),
+							  this.getWidth(),this.getWidth()-15,15,0};
+			int[] yEmeraude = {15,2,2,15,
+							  this.getHeight()-15,this.getHeight(),this.getHeight(),this.getHeight()-15};
+		    secondPinceau.fillPolygon(xEmeraude,yEmeraude,8);
+		}
 	    }
 }

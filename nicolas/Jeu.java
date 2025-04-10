@@ -9,8 +9,8 @@ public class Jeu{
 
 		for(ObjetGrille elem : tab){
 			if(elem!=null){
-				System.out.print(elem.getMyX()+", ");
-				System.out.println(elem.getMyY());
+				System.out.print(elem.getMyY()+", ");
+				System.out.println(elem.getMyX());
 			}
 		}
 		fenetre.setSize(1050,700);

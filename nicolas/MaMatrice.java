@@ -33,6 +33,6 @@ public class MaMatrice{
 	}
 
 	public ObjetGrille getObj(int x, int y){
-		return this.matr[x][y];
+		return this.matr[y][x];
 	}
 }
