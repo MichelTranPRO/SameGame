@@ -15,18 +15,23 @@ public class MonPanelMap extends JPanel {
     private char[][] choixMap;
     private boolean statutRandom;
     private boolean statutDefined;
-    private MaFenetre fenetreJeu;
+    private MaFenetreJeu fenetreJeu;
     private MaMatrice matriceGrille;
+    private PanelJeu jeu;
+    private PanelScore score;
+    private Fenetre fenetreMenu;
 
-    public MonPanelMap(){
+    public MonPanelMap(Fenetre f){
 
+        this.fenetreMenu = f;
         this.configuration = new ConfigMap();
         this.imageMap = new ImageMap();
         this.choix = 1;
         this.panelBouton = new JPanel();
         this.definedMap = new JButton("DEFINED MAP");
         this.randomMap = new JButton("RANDOM MAP");
-        this.fenetreJeu = new MaFenetre();
+        this.jeu = new PanelJeu();
+        this.score = new PanelScore();
 
         panelBouton.setLayout(new FlowLayout(FlowLayout.CENTER, 10,10));
 
@@ -48,17 +53,12 @@ public class MonPanelMap extends JPanel {
             public void actionPerformed(ActionEvent e){
                 configuration.setChoix("random");
                 choixMap = configuration.getGrilleChoix();
-                System.out.println("randomMap Cliqué");
-                matriceGrille = new MaMatrice(10, 15, fenetreJeu, choixMap);
+                matriceGrille = new MaMatrice(10, 15, jeu, choixMap,score);
 
                 if (choixMap != null){
+                    fenetreJeu = new MaFenetreJeu(jeu,score);
+                    fenetreMenu.dispose();
                     fenetreJeu.setVisible(true);
-                for (int i = 0; i < choixMap.length; i++) {
-                    for (int j = 0; j < choixMap[i].length; j++) {
-                        System.out.print(choixMap[i][j] + " ");
-                    }
-                    System.out.println();
-                }
                 statutRandom = true;
                 }
             }
@@ -82,17 +82,12 @@ public class MonPanelMap extends JPanel {
             public void actionPerformed(ActionEvent e){
                 configuration.setChoix("defined");
                 choixMap = configuration.getGrilleChoix();
-                System.out.println("definedmap Cliqué");
-                matriceGrille = new MaMatrice(10, 15, fenetreJeu, choixMap);
+                matriceGrille = new MaMatrice(10, 15, jeu, choixMap,score);
 
                 if (choixMap != null){
+                    fenetreJeu = new MaFenetreJeu(jeu,score);
+                    fenetreMenu.dispose();
                     fenetreJeu.setVisible(true);
-                    for (int i = 0; i < choixMap.length; i++) {
-                        for (int j = 0; j < choixMap[i].length; j++) {
-                            System.out.print(choixMap[i][j] + " ");
-                        }
-                        System.out.println();
-                    }
                 }
                 statutDefined = true;
             }

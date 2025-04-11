@@ -7,28 +7,28 @@ public class MaMatrice{
 	private Color couleurObjet; 
 	private char[][] grilleTemp; 
 
-	public MaMatrice(int hauteur, int largeur, MaFenetre fen, char[][] couleur){
+	public MaMatrice(int hauteur, int largeur, PanelJeu jeu, char[][] couleur, PanelScore scorePanel){
 		super();
 		this.grilleTemp = new char[10][15];
-		for (int i=0 ; i<10 ; i++){
-			for (int j=0 ; j<15 ; j++){
+		for (int i = 0; i < 10; i++){
+			for (int j = 0; j < 15; j++){
 				this.grilleTemp[i][j] = couleur[i][j];
 			}
 		}
 		this.matr = new ObjetGrille[hauteur][largeur];
-		for(int ligne=0; ligne<hauteur; ligne+=1){
-			for(int col=0; col<largeur; col+=1){
+		for(int ligne = 0; ligne < hauteur; ligne += 1){
+			for(int col = 0; col < largeur; col += 1){
 				if (couleur[ligne][col] == 'R'){
 					couleurObjet = Color.RED;
 				}
-				else if (couleur[ligne][col] == 'G'){
+				else if (couleur[ligne][col] == 'V'){
 					couleurObjet = Color.GREEN;
 				}
 				else if (couleur[ligne][col] == 'B'){
-					couleurObjet = Color.BLUE;
+					couleurObjet = Color.CYAN;
 				}
-				this.matr[ligne][col] = new ObjetGrille(ligne,col,couleurObjet);
-				fen.add(matr[ligne][col]);
+				this.matr[ligne][col] = new ObjetGrille(ligne, col, couleurObjet, this, scorePanel); 
+				jeu.add(matr[ligne][col]);
 			}
 		}
 	}
