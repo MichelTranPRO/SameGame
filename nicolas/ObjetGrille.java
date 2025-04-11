@@ -4,16 +4,22 @@ import javax.swing.*;
 public class ObjetGrille extends JComponent{
 	private int x;
 	private int y;
+	private boolean survole;
 
 	public ObjetGrille(int y,int x,Color clr){
 		super();
 		this.x=x;
 		this.y=y;
+		this.survole=false;
 		this.setClr(clr);
 	}
 
 	public void setClr(Color coul){
 		this.setBackground(coul);
+	}
+
+	public void setSurvole(boolean bool){
+		this.survole=bool;
 	}
 
 	public Color getClr(){
@@ -45,6 +51,11 @@ public class ObjetGrille extends JComponent{
 	      secondPinceau.fillRect(0, 0, this.getWidth(), this.getHeight());
 	    }
 
+	    if(this.survole){
+	    	secondPinceau.setColor(Color.YELLOW);
+	    	secondPinceau.fillRect(0, 0, this.getWidth(), this.getHeight());
+	    }
+
 	    secondPinceau.setColor(this.getClr());
 	    if(this.getClr()==Color.CYAN){
 		    secondPinceau.fillOval(0, 2, this.getWidth(), this.getHeight()-2);
@@ -55,10 +66,10 @@ public class ObjetGrille extends JComponent{
 		    secondPinceau.fillPolygon(xRuby,yRuby,5);
 		}
 		else if(this.getClr()==Color.GREEN){
-			int[] xEmeraude = {0,15,this.getWidth()-15,this.getWidth(),
-							  this.getWidth(),this.getWidth()-15,15,0};
-			int[] yEmeraude = {15,2,2,15,
-							  this.getHeight()-15,this.getHeight(),this.getHeight(),this.getHeight()-15};
+			int[] xEmeraude = {2,17,this.getWidth()-17,this.getWidth()-2,
+							  this.getWidth()-2,this.getWidth()-17,17,2};
+			int[] yEmeraude = {17,2,2,17,
+							  this.getHeight()-17,this.getHeight()-2,this.getHeight()-2,this.getHeight()-17};
 		    secondPinceau.fillPolygon(xEmeraude,yEmeraude,8);
 		}
 	    }

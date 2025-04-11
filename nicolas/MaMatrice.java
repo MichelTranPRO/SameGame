@@ -23,6 +23,7 @@ public class MaMatrice{
 					couleur=Color.GREEN;
 				}
 				this.matr[ligne][col] = new ObjetGrille(ligne,col,couleur);
+				matr[ligne][col].addMouseListener(new MouseOver(matr[ligne][col],this.matr));
 				fen.add(matr[ligne][col]);
 			}
 		}
