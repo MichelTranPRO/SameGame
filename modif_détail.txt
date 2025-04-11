@@ -1,3 +1,5 @@
+si tu veux tester le jeu, mon main est dans menu.java
+
 j'ai modifié quelques uns de tes programmes, 
 je les ai modifié dans mon dossier comme ça tu gardes les tiens. 
 Je te met le détail de ce que j'ai modif
