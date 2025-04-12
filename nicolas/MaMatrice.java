@@ -5,26 +5,25 @@ import java.util.Random;
 public class MaMatrice{
 	private ObjetGrille[][] matr;
 
-	public MaMatrice(int hauteur, int largeur, JFrame fen){
+	public MaMatrice(int hauteur, int largeur, PanelJeu pan, char[][] tabCoul, PanelScore scorePanel){
 		super();
-		Random graine = new Random();
 		Color couleur = Color.CYAN;
 		this.matr = new ObjetGrille[hauteur][largeur];
 		for(int ligne=0; ligne<hauteur; ligne+=1){
 			for(int col=0; col<largeur; col+=1){
-				int aleatoire = graine.nextInt(3);
-				if(aleatoire==0){
-					couleur=Color.CYAN;
-				}
-				else if(aleatoire==1){
+				if(tabCoul[ligne][col]=='R'){
 					couleur=Color.RED;
 				}
-				else if(aleatoire==2){
+				else if(tabCoul[ligne][col]=='V'){
 					couleur=Color.GREEN;
 				}
+				else if(tabCoul[ligne][col]=='B'){
+					couleur=Color.CYAN;
+				}
 				this.matr[ligne][col] = new ObjetGrille(ligne,col,couleur);
-				matr[ligne][col].addMouseListener(new MouseOver(matr[ligne][col],this.matr));
-				fen.add(matr[ligne][col]);
+				matr[ligne][col].addMouseListener(
+					new MouseInteraction(matr[ligne][col],this.matr, scorePanel));
+				pan.add(matr[ligne][col]);
 			}
 		}
 	}
