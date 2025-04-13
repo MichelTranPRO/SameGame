@@ -20,16 +20,18 @@ public class ConfigMap {
         
     }
 
-    private void selectDefined(){
+    public boolean selectDefined(){
         if (selectFichier.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
             this.fichier = selectFichier.getSelectedFile();
             lireFichier(this.fichier);
+            return true;
         } else {
             System.out.println("Aucun fichier sélectionné.");
+            return false;
         }
     }
 
-    private void selectRand() {
+    public void selectRand() {
         Random random = new Random();
         char[] tabColor = {'R', 'V', 'B'};
 
@@ -70,14 +72,5 @@ public class ConfigMap {
 
     public char[][] getGrilleChoix(){
         return grille;
-    }
-
-    public void setChoix(String choix){
-        if (choix.equals("random")){
-            selectRand();
-        }
-        if (choix.equals("defined")){
-            selectDefined();
-        }
     }
 }

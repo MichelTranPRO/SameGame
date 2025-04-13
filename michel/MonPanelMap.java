@@ -51,7 +51,7 @@ public class MonPanelMap extends JPanel {
         randomMap.addActionListener(new ActionListener(){ 
             @Override
             public void actionPerformed(ActionEvent e){
-                configuration.setChoix("random");
+                configuration.selectRand();
                 choixMap = configuration.getGrilleChoix();
                 matriceGrille = new MaMatrice(10, 15, jeu, choixMap,score);
 
@@ -59,7 +59,7 @@ public class MonPanelMap extends JPanel {
                     fenetreJeu = new MaFenetreJeu(jeu,score);
                     fenetreMenu.dispose();
                     fenetreJeu.setVisible(true);
-                statutRandom = true;
+                    statutRandom = true;
                 }
             }
         });
@@ -80,16 +80,16 @@ public class MonPanelMap extends JPanel {
         definedMap.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                configuration.setChoix("defined");
-                choixMap = configuration.getGrilleChoix();
-                matriceGrille = new MaMatrice(10, 15, jeu, choixMap,score);
-
-                if (choixMap != null){
-                    fenetreJeu = new MaFenetreJeu(jeu,score);
-                    fenetreMenu.dispose();
-                    fenetreJeu.setVisible(true);
+                if (configuration.selectDefined() == true){
+                    choixMap = configuration.getGrilleChoix();
+                    matriceGrille = new MaMatrice(10, 15, jeu, choixMap,score);
+                    if (choixMap != null){
+                        fenetreJeu = new MaFenetreJeu(jeu,score);
+                        fenetreMenu.dispose();
+                        fenetreJeu.setVisible(true);
+                    }
+                    statutDefined = true;
                 }
-                statutDefined = true;
             }
         });
 
