@@ -4,22 +4,29 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Random;
 import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class ConfigMap {
-    private JFileChooser choisirFichierDefined;
-    private String[] tabTemp;
     private char[][] grille;
-    File file;
+    private File fichier = new File("");
+    private JFileChooser selectFichier;
+    private FileNameExtensionFilter filtre = new FileNameExtensionFilter(" ","txt");
 
     public ConfigMap() {
-        this.file = new File("map/definedMap.txt");
-        this.tabTemp = new String[10];
+        this.fichier = new File("");
         this.grille = new char[10][15];
-        this.choisirFichierDefined = new JFileChooser(file);
+        this.selectFichier = new JFileChooser();selectFichier.setFileFilter(filtre);
+        selectFichier.setCurrentDirectory(new File("./map"));
+        
     }
 
     private void selectDefined(){
-        lireFichier(this.file);
+        if (selectFichier.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+            this.fichier = selectFichier.getSelectedFile();
+            lireFichier(this.fichier);
+        } else {
+            System.out.println("Aucun fichier sélectionné.");
+        }
     }
 
     private void selectRand() {
@@ -55,7 +62,7 @@ public class ConfigMap {
                 }
             }
         } catch (IOException e) {
-            System.err.println("Erreur de lecture du fichier !");
+            System.err.println("Erreur de lecture du fichier");
         }
     }
 
