@@ -5,14 +5,14 @@ public class ObjetGrille extends JComponent{
 	private int x;
 	private int y;
 	private boolean survole;
-	private boolean etat;
+	private boolean myEtat;
 
 	public ObjetGrille(int y,int x,Color clr){
 		super();
 		this.x=x;
 		this.y=y;
 		this.survole=false;
-		this.etat=true;
+		this.myEtat=true;
 		this.setClr(clr);
 	}
 
@@ -25,7 +25,7 @@ public class ObjetGrille extends JComponent{
 	}
 
 	public void setEtat(boolean bool){
-		this.etat=bool;
+		this.myEtat=bool;
 	}
 
 	public Color getClr(){
@@ -40,17 +40,17 @@ public class ObjetGrille extends JComponent{
 		return this.y;
 	}
 
-	public boolean vivant(){
-		return this.etat;
+	public boolean getMyEtat(){
+		return this.myEtat;
 	}
 
 	public boolean equals(ObjetGrille comp){
 		if(this.x == comp.getMyX() && this.y == comp.getMyY()){
-			return true;
+			if(this.getClr()==comp.getClr()){
+				return true;
+			}
 		}
-		else{
-			return false;
-		}
+		return false;
 	}
 
 	@Override

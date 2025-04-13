@@ -6,7 +6,7 @@ public class MouseInteraction implements MouseListener{
 	private ObjetGrille objAssoc;
 	private ObjetGrille[][] matrice;
 	private PanelScore scoreRef;
-	// static car il n'y aura toujours qu'un seul groupe dernierement visité
+	// static car il n'y aura toujours qu'un seul groupe dernierement visité.
 	private static ObjetGrille[] dernierVoisin;
 
 	public MouseInteraction(ObjetGrille objAssoc, ObjetGrille[][] matrice, PanelScore scorePanel){
@@ -18,8 +18,16 @@ public class MouseInteraction implements MouseListener{
 
 	@Override
 	public void mouseClicked(MouseEvent evenement){
+		// on casse les voisins.
 		int nbVoisinCasse = AlgoJeu.casserVoisin(this.dernierVoisin);
 		scoreRef.setScore(nbVoisinCasse);
+		// on fait chuter les cases.
+		int[] colCasse = AlgoJeu.getColCasse(this.dernierVoisin, nbVoisinCasse);
+		AlgoJeu.gererGravite(this.matrice,colCasse);
+		// on recalcule les voisins après la chute.
+		AlgoJeu.setSurvoleVoisin(this.dernierVoisin, false);
+		ObjetGrille[] temp = AlgoJeu.getVoisin(this.matrice, this.objAssoc.getMyY(), this.objAssoc.getMyX());
+		this.dernierVoisin = AlgoJeu.setSurvoleVoisin(temp, true);
 	}
 
 	@Override
