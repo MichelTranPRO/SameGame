@@ -2,7 +2,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.JFrame;
 import java.awt.*;
 
-public class menu {
+public class Menu {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
             Fenetre fenetreMenu = new Fenetre();

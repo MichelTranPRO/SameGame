@@ -6,20 +6,50 @@ import java.util.Random;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-public class ConfigMap {
-    private char[][] grille;
-    private File fichier = new File("");
-    private JFileChooser selectFichier;
-    private FileNameExtensionFilter filtre = new FileNameExtensionFilter(" ","txt");
+/**
+ * La classe <code>ConfigMap</code> permet de gérer la configuration de la grille.
+ * 
+ * @version 1.1
+ * @author Michel Tran
+ */
 
+public class ConfigMap {
+    /**
+     * Tableau qui contient les couleurs de la grille finale.
+     */
+    private char[][] grille;
+    
+    /**
+     * Fichier de configuration choisi.
+     */
+    private File fichier;
+
+    /**
+     * Sélecteur de fichiers utilisé pour choisir un fichier de configuration.
+     */
+    private JFileChooser selectFichier;
+
+    /**
+     * Filter permettant de choisir seulement les fichiers "txt".
+     */
+    private FileNameExtensionFilter filtre;
+
+    /**
+     * Constructeur de la classe <code>ConfigMap</code>. Initialise la grille, prépare le filtre et défini le dossier par défaut. 
+     */
     public ConfigMap() {
         this.fichier = new File("");
         this.grille = new char[10][15];
+        this.filtre = new FileNameExtensionFilter(" ","txt");
         this.selectFichier = new JFileChooser();selectFichier.setFileFilter(filtre);
         selectFichier.setCurrentDirectory(new File("./map"));
         
     }
 
+    /**
+     * Ouvre une boite de dialogue pour sélectionner le fichier voulu.
+     * @return si un fichier a été sélectioné alors la méthode renvoie <code>true</code> sinon <code>false</code>.
+     */
     public boolean selectDefined(){
         if (selectFichier.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
             this.fichier = selectFichier.getSelectedFile();
@@ -31,6 +61,9 @@ public class ConfigMap {
         }
     }
 
+    /**
+     * Crée un tableau de charactère composé de "R","G" et "B", rempli ensuite le tableau grille avec ces caractères de manière aléatoire.
+     */
     public void selectRand() {
         Random random = new Random();
         char[] tabColor = {'R', 'V', 'B'};
@@ -43,6 +76,10 @@ public class ConfigMap {
         }
     }
 
+    /**
+     * Permet de lire un fichier texte ligne par ligne et de remplir le tableau grille avec les caractères lus.
+     * @param file le fichier choisi qu'on souhaite lire.
+     */
     private void lireFichier(File file) {
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String ligne;
@@ -68,8 +105,10 @@ public class ConfigMap {
         }
     }
 
-
-
+    /**
+     * Renvoie le tableau de la grille.
+     * @return le tableaud de la grille.
+     */
     public char[][] getGrilleChoix(){
         return grille;
     }
