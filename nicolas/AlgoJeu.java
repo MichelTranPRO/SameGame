@@ -97,7 +97,7 @@ public class AlgoJeu{
 	// vérifications pour la "gravité".
 	public static int[] getColCasse(ObjetGrille[] tabVoisins, int nbVoisinCasse){
 		int[] colCasse = new int[15]; // 15 est le nombre max de col cassée.
-		// on rempli le tableau de -1 pour éviter les confusions.
+		// on remplit le tableau de -1 pour éviter les confusions.
 		for(int i=0; i<colCasse.length; i+=1){
 			colCasse[i]=-1;
 		}
@@ -158,13 +158,51 @@ public class AlgoJeu{
 		}
 	}
 
+	// vérifications et maj pour les colonnes vides
 	public static boolean colVide(ObjetGrille[][] matrVoisins, int nbCol){
-		boolean vide = false;
+		boolean vide = true;
 		for(int i=0; i<matrVoisins.length; i+=1){
 			if(matrVoisins[i][nbCol].getMyEtat()){
-				vide=true;
+				vide=false;
 			}
 		}
 		return vide;
+	}
+
+	public static void descTriBulle(int[] tab){
+		for(int i=tab.length-1; i>=0; i-=1){
+			for(int j=0; j<i; j+=1){
+				if(tab[j]<tab[j+1]){
+					int temp = tab[j+1];
+					tab[j+1] = tab[j];
+					tab[j] = temp;
+				}
+			}
+		}
+	}
+
+	public static void majColVide(ObjetGrille[][] matrice, int[] colCasse){
+		for(int col : colCasse){
+			if(AlgoJeu.colVide(matrice, col)){
+				for(int x=0; x<matrice[0].length-(col+1); x+=1){
+					for(int y=0; y<matrice.length; y+=1){
+						if((col+x)<15){
+							// on vole les attributs du suivant
+							ObjetGrille objActuel = matrice[y][col+x];
+							objActuel.setClr(matrice[y][col+x+1].getClr());
+							objActuel.setEtat(matrice[y][col+x+1].getMyEtat());
+							if(objActuel.getMyEtat()){
+								objActuel.setVisible(true);
+							}
+							objActuel.repaint();
+							// on enlève les attributs de l'objet suivant
+							matrice[y][col+x+1].setEtat(false);
+							matrice[y][col+x+1].setVisible(false);
+							matrice[y][col+x+1].repaint();
+						}
+					}
+				}
+			}
+		}
 	}
 }

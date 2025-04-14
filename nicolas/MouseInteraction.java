@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Arrays;
 
 public class MouseInteraction implements MouseListener{
 	private ObjetGrille objAssoc;
@@ -21,10 +22,16 @@ public class MouseInteraction implements MouseListener{
 		// on casse les voisins.
 		int nbVoisinCasse = AlgoJeu.casserVoisin(this.dernierVoisin);
 		scoreRef.setScore(nbVoisinCasse);
+
 		// on fait chuter les cases.
 		int[] colCasse = AlgoJeu.getColCasse(this.dernierVoisin, nbVoisinCasse);
 		AlgoJeu.gererGravite(this.matrice,colCasse);
-		// on recalcule les voisins après la chute.
+
+		//on colle a gauche
+		AlgoJeu.descTriBulle(colCasse); // on trie le tableau dans l'ordre décroissant
+		AlgoJeu.majColVide(this.matrice,colCasse);
+
+		// on recalcule les voisins après les ajustements.
 		AlgoJeu.setSurvoleVoisin(this.dernierVoisin, false);
 		ObjetGrille[] temp = AlgoJeu.getVoisin(this.matrice, this.objAssoc.getMyY(), this.objAssoc.getMyX());
 		this.dernierVoisin = AlgoJeu.setSurvoleVoisin(temp, true);
