@@ -31,7 +31,7 @@ public class ImageMap extends JComponent {
     }
     /**
      * Défini le choix et change l'image affiché en fonction du choix.
-     * @param ch choix de l'image (1 ou 2).
+     * @param ch choix de l'image (1 = définie et 2 = aleatoire).
      */
     public void setChoix(int ch) {
         this.choix = ch;

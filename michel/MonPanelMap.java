@@ -14,6 +14,9 @@ import java.awt.event.MouseMotionListener;
  */
 public class MonPanelMap extends JPanel {
 
+    private SourisInterractionDefinie sourisCarteDefinie;
+    private SourisInterractionAleatoire sourisCarteAleatoire;
+
     /** 
      * Bouton pour sélectionner le choix "Carte aléatoire". 
      */
@@ -101,70 +104,18 @@ public class MonPanelMap extends JPanel {
         this.carteAleatoire = new JButton("Carte aléatoire");
         this.jeu = new PanelJeu();
         this.score = new PanelScore();
+        this.sourisCarteDefinie = new SourisInterractionDefinie(choix, imageCarte, choixMap, configuration, matriceGrille, fenetreMenu, fenetreJeu, statutDefined, jeu, score);
+        this.sourisCarteAleatoire = new SourisInterractionAleatoire(choix, imageCarte, choixMap, configuration, matriceGrille, fenetreMenu, fenetreJeu, statutDefined, jeu, score);
 
         panelBouton.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
 
         /** --- BOUTON CARTE ALÉATOIRE --- **/
         carteAleatoire.setPreferredSize(new Dimension(200, 50));
-        carteAleatoire.addMouseMotionListener(new MouseMotionListener() {
-            @Override
-            public void mouseMoved(MouseEvent e) {
-                choix = 2;
-                imageCarte.setChoix(choix);
-            }
-
-            @Override
-            public void mouseDragged(MouseEvent e) {
-                // Rien à faire ici
-            }
-        });
-
-        carteAleatoire.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                configuration.selectRand(); /** Envoie l'information du choix. */
-                choixMap = configuration.getGrilleChoix(); /** Récupère un tableau aléatoire de char[][] avec "R","G" et "B" à l'intérieur.*/
-                matriceGrille = new MaMatrice(10, 15, jeu, choixMap, score);
-
-                if (choixMap != null) {
-                    fenetreJeu = new MaFenetreJeu(jeu, score);
-                    fenetreMenu.dispose();
-                    fenetreJeu.setVisible(true);
-                    statutRandom = true;
-                }
-            }
-        });
+        carteAleatoire.addMouseListener(sourisCarteAleatoire);
 
         /** --- BOUTON CARTE DÉFINIE --- **/
         carteDefinie.setPreferredSize(new Dimension(200, 50));
-        carteDefinie.addMouseMotionListener(new MouseMotionListener() {
-            @Override
-            public void mouseMoved(MouseEvent e) {
-                choix = 1;
-                imageCarte.setChoix(choix);
-            }
-
-            @Override
-            public void mouseDragged(MouseEvent e) {
-            }
-        });
-
-        carteDefinie.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (configuration.selectDefined()) {
-                    choixMap = configuration.getGrilleChoix(); /** Récupère les caractères du fichier et les mets dans un tableau de char [][].*/
-                    matriceGrille = new MaMatrice(10, 15, jeu, choixMap, score);
-
-                    if (choixMap != null) {
-                        fenetreJeu = new MaFenetreJeu(jeu, score);
-                        fenetreMenu.dispose();
-                        fenetreJeu.setVisible(true);
-                        statutDefined = true;
-                    }
-                }
-            }
-        });
+        carteDefinie.addMouseListener(sourisCarteDefinie);
 
         /** Ajout des boutons au panneau. */
         panelBouton.add(carteAleatoire);

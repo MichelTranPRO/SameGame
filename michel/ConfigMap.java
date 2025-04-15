@@ -63,8 +63,9 @@ public class ConfigMap {
 
     /**
      * Crée un tableau de charactère composé de "R","G" et "B", rempli ensuite le tableau grille avec ces caractères de manière aléatoire.
+     * @return la méthode renvoie <code>true</code> sinon <code>false</code>.
      */
-    public void selectRand() {
+    public boolean selectRand() {
         Random random = new Random();
         char[] tabColor = {'R', 'V', 'B'};
 
@@ -74,6 +75,7 @@ public class ConfigMap {
                 this.grille[i][j] = tabColor[cleTab];
             }
         }
+        return true;
     }
 
     /**
