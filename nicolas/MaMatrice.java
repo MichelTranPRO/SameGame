@@ -2,9 +2,26 @@ import java.awt.*;
 import javax.swing.*;
 import java.util.Random;
 
+/**
+ * La classe <code>MaMatrice</code> génère la matrice du jeu.
+ * 
+ *  
+ * @version 1.1
+ * @author Nicolas Miekisiak
+ */
 public class MaMatrice{
 	private ObjetGrille[][] matr;
 
+	/**
+	* Unique constructeur de MaMatrice qui génère une matrice et les ajoutes à un panel.
+	*
+	* @param hauteur la hauteur de la matrice.
+	* @param largeur la largeur de la matrice.
+	* @param pan le panneau dans lequel les ObjetGrille seront mis.
+	* @param tabCoul la matrice des couleurs qui définira le pattern de la map.
+	* @param scorePanel le panneau de score qui sera influencé par les ObjetGrille de la matrice.
+	* 
+	*/
 	public MaMatrice(int hauteur, int largeur, PanelJeu pan, char[][] tabCoul, PanelScore scorePanel){
 		super();
 		Color couleur = Color.CYAN;
@@ -28,11 +45,13 @@ public class MaMatrice{
 		}
 	}
 
+	/**
+	* Renvoie la matrice générée dans le constructeur.
+	* 
+	* @return la matrice générée dans le constructeur.
+	* 
+	*/
 	public ObjetGrille[][] getMatr(){
 		return this.matr;
-	}
-
-	public ObjetGrille getObj(int x, int y){
-		return this.matr[y][x];
 	}
 }

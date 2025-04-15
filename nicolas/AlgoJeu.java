@@ -1,8 +1,24 @@
 import java.awt.*;
 
+/**
+ * La classe <code>AlgoJeu</code> rassemble tous les algorithmes permettant le bon fonctionnement du jeu.
+ * 
+ *  
+ * @version 1.1
+ * @author Nicolas Miekisiak
+ */
 public class AlgoJeu{
 
 	// Algorithmes de recherche des vosins :
+	/**
+	* Renvoie un tableau d'ObjetGrille contenant les voisins directs d'un objet dans une matrice.
+	*
+	* @param matrice une matrice d'ObjetGrille
+	* @param ligne la ligne à laquelle l'objet est situé
+	* @param col la col à laquelle l'objet est situé
+	* 
+	* @return un tableau d'ObjetGrille contenant les voisins directs d'un objet dans une matrice.
+	*/
 	public static ObjetGrille[] getVoisinDirect(ObjetGrille[][] matrice, int ligne, int col){
 		ObjetGrille[] tabVoisin = new ObjetGrille[4];
 		int compt=0;
@@ -36,6 +52,14 @@ public class AlgoJeu{
 		return tabVoisin;
 	}
 
+	/**
+	* Renvoie true si un tableau d'ObjetGrille contient un objet, false sinon.
+	*
+	* @param tab tableau d'ObjetGrille à parcourir.
+	* @param obj l'ObjetGrille à comparé.
+	* 
+	* @return true si l'objet est dedans, false sinon.
+	*/
 	public static boolean contient(ObjetGrille[] tab, ObjetGrille obj){
 		boolean cont = false;
 		int index = 0;
@@ -49,6 +73,15 @@ public class AlgoJeu{
 		return cont;
 	}
 
+	/**
+	* Renvoie un tableau d'ObjetGrille contenant tous les voisins d'un objet.
+	*
+	* @param matrice une matrice d'ObjetGrille.
+	* @param lig la ligne à laquelle l'objet est situé.
+	* @param col la col à laquelle l'objet est situé.
+	* 
+	* @return un tableau d'ObjetGrille contenant tous les voisins d'un objet.
+	*/
 	public static ObjetGrille[] getVoisin(ObjetGrille[][] matrice, int lig, int col){
 		ObjetGrille[] allVoisin = new ObjetGrille[150];
 		int comptAV=0, parc=0;
@@ -72,6 +105,14 @@ public class AlgoJeu{
 	// fin des algorithmes de recherche des voisins.
 
 	// pour les MouseListener :
+	/**
+	* Change l'attribut survole de tous les ObjetGrille d'un tableau.
+	*
+	* @param tabVoisins le tableau contenant les voisins à modifier.
+	* @param etat l'etat (true ou false) à assigné a l'attribut survole de chaque voisin.
+	* 
+	* @return le tableau d'ObjetGrille mis en argument.
+	*/
 	public static ObjetGrille[] setSurvoleVoisin(ObjetGrille[] tabVoisins, boolean etat){
 		int compt = 0;
 		while(tabVoisins[compt]!=null){
@@ -82,7 +123,14 @@ public class AlgoJeu{
 		return tabVoisins;
 	}
 
-	public static int casserVoisin(ObjetGrille[] tabVoisins){ // renvoi le nombre de voisin en plus
+	/**
+	* Met l'etat à false des ObjetGrille d'un tableau et les caches.
+	*
+	* @param tabVoisins le tableau contenant les voisins à casser.
+	* 
+	* @return le nombre de voisin(s) cassé.
+	*/
+	public static int casserVoisin(ObjetGrille[] tabVoisins){ // renvoi le nombre de voisin cassé
 		int nbVoisin=0; 
         if (tabVoisins[1] != null){
             while(tabVoisins[nbVoisin]!=null){
@@ -95,6 +143,14 @@ public class AlgoJeu{
 	}
 
 	// vérifications pour la "gravité".
+	/**
+	* Renvoie un tableau(int) des colonnes affectée par casserVoisin().
+	*
+	* @param tabVoisins le tableau contenant les voisins cassés.
+	* @param nbVoisinCasse le nombre de voisins cassés.
+	* 
+	* @return un tableau(int) des colonnes affectée.
+	*/
 	public static int[] getColCasse(ObjetGrille[] tabVoisins, int nbVoisinCasse){
 		int[] colCasse = new int[15]; // 15 est le nombre max de col cassée.
 		// on remplit le tableau de -1 pour éviter les confusions.
@@ -128,6 +184,13 @@ public class AlgoJeu{
 		return finColCasse;
 	}
 
+	/**
+	* Fait chuter les ObjetGrille si nécessaire.
+	*
+	* @param matrice la matrice d'ObjetGrille du jeu.
+	* @param colCasse les colonnes affectées par CasserVoisin().
+	* 
+	*/
 	public static void gererGravite(ObjetGrille[][] matrice, int[] colCasse){
 		for(int col : colCasse){
 			// on commence de la dernière ligne
@@ -159,6 +222,14 @@ public class AlgoJeu{
 	}
 
 	// vérifications et maj pour les colonnes vides
+	/**
+	* Renvoie true si une colonne est vide, false sinon.
+	*
+	* @param matrVoisins la matrice d'ObjetGrille du jeu.
+	* @param nbCol le numéro de la colonne à vérifier.
+	* 
+	* @return true si une colonne est vide, false sinon.
+	*/
 	public static boolean colVide(ObjetGrille[][] matrVoisins, int nbCol){
 		boolean vide = true;
 		for(int i=0; i<matrVoisins.length; i+=1){
@@ -169,6 +240,12 @@ public class AlgoJeu{
 		return vide;
 	}
 
+	/**
+	* Trie un tableau dans l'ordre décroissant avec un bubble sort.
+	*
+	* @param tab le tableau à trier.
+	* 
+	*/
 	public static void descTriBulle(int[] tab){
 		for(int i=tab.length-1; i>=0; i-=1){
 			for(int j=0; j<i; j+=1){
@@ -181,7 +258,15 @@ public class AlgoJeu{
 		}
 	}
 
+	/**
+	* Colle les colonnes à gauche si il y en a une vide.
+	*
+	* @param matrice la matrice d'ObjetGrille du jeu.
+	* @param colCasse un talbeau des colonnes cassées.
+	* 
+	*/
 	public static void majColVide(ObjetGrille[][] matrice, int[] colCasse){
+		AlgoJeu.descTriBulle(colCasse); // on trie dans l'odre décroissant
 		for(int col : colCasse){
 			if(AlgoJeu.colVide(matrice, col)){
 				for(int x=0; x<matrice[0].length-(col+1); x+=1){

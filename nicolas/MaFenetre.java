@@ -1,7 +1,17 @@
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * La classe <code>MaFenetre</code> génère une fenêtre.
+ *  
+ * @version 1.1
+ * @author Nicolas Miekisiak
+ */
 public class MaFenetre extends JFrame{
+	/**
+    * Constructeur unique destiné a la création de la fenêtre.
+    *
+    */
 	public MaFenetre(){
 		super();
 		this.setSize(1050,700);

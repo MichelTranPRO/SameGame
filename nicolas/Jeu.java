@@ -2,6 +2,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.Random;
 
+/**
+ * La classe <code>Jeu</code> contient le main.
+ * @version 1.1
+ * @author Nicolas Miekisiak
+ */
 public class Jeu{
 	public static void main(String[] args){
 		MaFenetre fenetre = new MaFenetre();

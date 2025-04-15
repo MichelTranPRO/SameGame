@@ -4,9 +4,31 @@ import javax.swing.JPanel;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 
+/**
+ * La classe <code>PanelScore</code> est utilisée pour gérer l'affichage du score.
+ * @version 1.1
+ * @author Michel Tran
+ */
 public class PanelScore extends JPanel {
-    int score, HEIGHT, WIDTH;
-    JLabel scoreTexte,vide1,vide2;
+    /**
+     * Valeur du score.
+     */
+    private int score;
+    /**
+     * Constante de la hauteur du grid.
+     */
+    private int HEIGHT;
+    /**
+     * Constante de la largeur du grid.
+     */
+    private int WIDTH;
+    /** 
+     * Texte du score.
+     */
+    private JLabel scoreTexte,vide1,vide2;
+    /**
+     * Constructeur de la classe <code>PanelScore</code>. Initialise les paramètres du panneau.
+     */
     public PanelScore(){
         this.HEIGHT=3;
         this.WIDTH=1;
@@ -20,11 +42,14 @@ public class PanelScore extends JPanel {
         add(vide2);
     }
 
+     /**
+     * Définie le nouveau score, grace à la formule (nombre de voisins - 2)².
+     * @param nbVoisin nombre de voisins de la meme couleur.
+     */
     public void setScore(int nbVoisin){
         if(nbVoisin!=0){
             this.score = score + (nbVoisin-2)*(nbVoisin-2);
             scoreTexte.setText("score : " + String.format("%04d", score));
         }
-    }
-    
+    }   
 }

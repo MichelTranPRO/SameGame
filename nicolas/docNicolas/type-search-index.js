@@ -1,0 +1,1 @@
+typeSearchIndex = [{"p":"<Unnamed>","l":"AlgoJeu"},{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"<Unnamed>","l":"Jeu"},{"p":"<Unnamed>","l":"MaFenetre"},{"p":"<Unnamed>","l":"MaMatrice"},{"p":"<Unnamed>","l":"MouseInteraction"},{"p":"<Unnamed>","l":"ObjetGrille"},{"p":"<Unnamed>","l":"PanelJeu"},{"p":"<Unnamed>","l":"PanelScore"}];updateSearchResults();
