@@ -2,13 +2,46 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class SourisInterractionAleatoire implements MouseListener{
+
+    /** 
+     * Valeur qui contient soit 1 ou 2, si la souris est au dessus du bouton "Carte aléatoire" alors choix = 2, 
+     * et si la souris est au dessus du bouton "Carte définie" alors choix = 1. 
+     */
     private int choix;
+
+    /** 
+     * Composant graphique affichant une image correspondant au choix. 
+     */
     private ImageMap imageCarte;
+
+    /** 
+     * Grille choisie par l'utilisateur (définie ou aléatoire). 
+     */
     private char[][] choixMap;
+
+    /** 
+     * Objet de gestion de la configuration de la carte. 
+     */
     private ConfigMap configuration;
+
+    /** 
+     * Objet représentant la matrice du jeu. 
+     */
     private MaMatrice matriceGrille;
+
+    /** 
+     * Fenêtre du menu principal. 
+     */
     private Fenetre fenetreMenu;
+
+    /** 
+     * Fenêtre de jeu affichée après sélection d'une carte. 
+     */
     private MaFenetreJeu fenetreJeu;
+
+    /** 
+    * Indique si une carte aléatoire a été sélectionnée. 
+    */
     private boolean statutRandom;
     /** 
      * Panneau de jeu. 
@@ -19,17 +52,31 @@ public class SourisInterractionAleatoire implements MouseListener{
      * Panneau d'affichage des scores. 
      */
     private PanelScore score;
-    public SourisInterractionAleatoire(int c, ImageMap i, char[][] cm, ConfigMap confMap, MaMatrice matrGrille, Fenetre fenMenu, MaFenetreJeu fenJeu, Boolean statRand, PanelJeu j, PanelScore s){
-        this.choix = c;
-        this.imageCarte = i;
-        this.choixMap = cm;
+    
+    /**
+     * 
+     * @param choixRef variable nécessaire à la référence de la classe <code>MonPanelMap</code>.
+     * @param imageCarteRef variable nécessaire à la référence de la classe <code>MonPanelMap</code>.
+     * @param choixMapRef variable nécessaire à la référence de la classe <code>MonPanelMap</code>.
+     * @param confMap variable nécessaire à la référence de la classe <code>MonPanelMap</code>.
+     * @param matrGrilleRef variable nécessaire à la référence de la classe <code>MonPanelMap</code>.
+     * @param fenMenuRef variable nécessaire à la référence de la classe <code>MonPanelMap</code>.
+     * @param fenJeuRef variable nécessaire à la référence de la classe <code>MonPanelMap</code>.
+     * @param statRand variable nécessaire à la référence de la classe <code>MonPanelMap</code>.
+     * @param jeuRef variable nécessaire à la référence de la classe <code>MonPanelMap</code>.
+     * @param scoreRef variable nécessaire à la référence de la classe <code>MonPanelMap</code>.
+     */
+    public SourisInterractionAleatoire(int choixRef, ImageMap imageCarteRef, char[][] choixMapRef, ConfigMap confMap, MaMatrice matrGrilleRef, Fenetre fenMenuRef, MaFenetreJeu fenJeuRef, Boolean statRand, PanelJeu jeuRef, PanelScore scoreRef){
+        this.choix = choixRef;
+        this.imageCarte = imageCarteRef;
+        this.choixMap = choixMapRef;
         this.configuration = confMap;
-        this.matriceGrille = matrGrille;
-        this.fenetreMenu = fenMenu;
-        this.fenetreJeu = fenJeu;
+        this.matriceGrille = matrGrilleRef;
+        this.fenetreMenu = fenMenuRef;
+        this.fenetreJeu = fenJeuRef;
         this.statutRandom = statRand; 
-        this.jeu = j;
-        this.score = s;
+        this.jeu = jeuRef;
+        this.score = scoreRef;
 
     }
     
@@ -56,7 +103,6 @@ public class SourisInterractionAleatoire implements MouseListener{
     public void mouseReleased(MouseEvent e) {
     }
 
-    /** --- ACTION SOURIS SUR LE COMPOSANT --- **/
     @Override
     public void mouseEntered(MouseEvent e) {
         choix = 2;

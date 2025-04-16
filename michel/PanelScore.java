@@ -53,5 +53,9 @@ public class PanelScore extends JPanel {
         this.score = score + (nbVoisin-2)*(nbVoisin-2);
         scoreTexte.setText("score : " + String.format("%04d", score));
     }
+
+    public int getScore(){
+        return score;
+    }
     
 }

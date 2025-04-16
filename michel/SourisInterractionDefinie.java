@@ -2,15 +2,46 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class SourisInterractionDefinie implements MouseListener{
+    /** 
+     * Valeur qui contient soit 1 ou 2, si la souris est au dessus du bouton "Carte aléatoire" alors choix = 2, 
+     * et si la souris est au dessus du bouton "Carte définie" alors choix = 1. 
+     */
     private int choix;
-    private ImageMap imageCarte;
-    private char[][] choixMap;
-    private ConfigMap configuration;
-    private MaMatrice matriceGrille;
-    private Fenetre fenetreMenu;
-    private MaFenetreJeu fenetreJeu;
-    private boolean statutDefined;
 
+    /** 
+     * Composant graphique affichant une image correspondant au choix. 
+     */
+    private ImageMap imageCarte;
+
+    /** 
+     * Grille choisie par l'utilisateur (définie ou aléatoire). 
+     */
+    private char[][] choixMap;
+
+    /** 
+     * Objet de gestion de la configuration de la carte. 
+     */
+    private ConfigMap configuration;
+
+    /** 
+     * Objet représentant la matrice du jeu. 
+     */
+    private MaMatrice matriceGrille;
+
+    /** 
+     * Fenêtre du menu principal. 
+     */
+    private Fenetre fenetreMenu;
+
+    /** 
+     * Fenêtre de jeu affichée après sélection d'une carte. 
+     */
+    private MaFenetreJeu fenetreJeu;
+
+    /** 
+    * Indique si une carte définie a été sélectionnée. 
+    */
+    private boolean statutDefined;
     /** 
      * Panneau de jeu. 
      */
@@ -20,17 +51,31 @@ public class SourisInterractionDefinie implements MouseListener{
      * Panneau d'affichage des scores. 
      */
     private PanelScore score;
-    public SourisInterractionDefinie(int c, ImageMap i, char[][] cm, ConfigMap confMap, MaMatrice matrGrille, Fenetre fenMenu, MaFenetreJeu fenJeu, Boolean statDef, PanelJeu j, PanelScore s){
-        this.choix = c;
-        this.imageCarte = i;
-        this.choixMap = cm;
+    
+    /**
+     * 
+     * @param choixRef variable nécessaire à la référence de la classe <code>MonPanelMap</code>.
+     * @param imageCarteRef variable nécessaire à la référence de la classe <code>MonPanelMap</code>.
+     * @param choixMapRef variable nécessaire à la référence de la classe <code>MonPanelMap</code>.
+     * @param confMap variable nécessaire à la référence de la classe <code>MonPanelMap</code>.
+     * @param matrGrilleRef variable nécessaire à la référence de la classe <code>MonPanelMap</code>.
+     * @param fenMenuRef variable nécessaire à la référence de la classe <code>MonPanelMap</code>.
+     * @param fenJeuRef variable nécessaire à la référence de la classe <code>MonPanelMap</code>.
+     * @param statRand variable nécessaire à la référence de la classe <code>MonPanelMap</code>.
+     * @param jeuRef variable nécessaire à la référence de la classe <code>MonPanelMap</code>.
+     * @param scoreRef variable nécessaire à la référence de la classe <code>MonPanelMap</code>.
+     */
+    public SourisInterractionDefinie(int choixRef, ImageMap imageCarteRef, char[][] choixMapRef, ConfigMap confMap, MaMatrice matrGrilleRef, Fenetre fenMenuRef, MaFenetreJeu fenJeuRef, Boolean statDefRef, PanelJeu jeuRef, PanelScore scoreRef){
+        this.choix = choixRef;
+        this.imageCarte = imageCarteRef;
+        this.choixMap = choixMapRef;
         this.configuration = confMap;
-        this.matriceGrille = matrGrille;
-        this.fenetreMenu = fenMenu;
-        this.fenetreJeu = fenJeu;
-        this.statutDefined = statDef; 
-        this.jeu = j;
-        this.score = s;
+        this.matriceGrille = matrGrilleRef;
+        this.fenetreMenu = fenMenuRef;
+        this.fenetreJeu = fenJeuRef;
+        this.statutDefined = statDefRef; 
+        this.jeu = jeuRef;
+        this.score = scoreRef;
 
     }
     
