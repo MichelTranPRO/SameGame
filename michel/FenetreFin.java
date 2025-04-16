@@ -37,7 +37,6 @@ public class FenetreFin extends JFrame{
     private JButton boutonRejouer; 
 
     private RejouerInterraction actionRejouer;
-    private Menu menu;
 
     /**
      * Constructeur de la classe <code>Fenetre</code>. Défini les paramètres de la fenetre.
@@ -51,7 +50,6 @@ public class FenetreFin extends JFrame{
         this.setLayout(new BorderLayout());
         this.setVisible(true);
 
-        menu = new Menu();
         actionRejouer = new RejouerInterraction(this);
         this.boutonRejouer = new JButton("Rejouer");
         boutonRejouer.setPreferredSize(new Dimension(200, 50));
