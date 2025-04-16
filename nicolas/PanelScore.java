@@ -52,4 +52,8 @@ public class PanelScore extends JPanel {
             scoreTexte.setText("score : " + String.format("%04d", score));
         }
     }   
+
+    public int getScore(){
+        return score;
+    }
 }
