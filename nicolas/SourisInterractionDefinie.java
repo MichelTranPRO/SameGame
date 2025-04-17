@@ -1,6 +1,10 @@
 import java.awt.event.*;
-import javax.swing.*;
 
+/**
+ * La classe <code>SourisInterractionDefinie</code> est utilisé pour gérer les actions du bouton "Carte définie".
+ * @author Michel Tran 
+ * @version 1.1
+ */
 public class SourisInterractionDefinie implements MouseListener{
     /** 
      * Valeur qui contient soit 1 ou 2, si la souris est au dessus du bouton "Carte aléatoire" alors choix = 2, 
@@ -53,7 +57,7 @@ public class SourisInterractionDefinie implements MouseListener{
     private PanelScore score;
     
     /**
-     * 
+     * Constructeur de la classe <code>SourisInterractionDefinie</code> permet de faire le lien avec <code>MonPanelMap</code>.
      * @param choixRef variable nécessaire à la référence de la classe <code>MonPanelMap</code>.
      * @param imageCarteRef variable nécessaire à la référence de la classe <code>MonPanelMap</code>.
      * @param choixMapRef variable nécessaire à la référence de la classe <code>MonPanelMap</code>.
@@ -61,11 +65,13 @@ public class SourisInterractionDefinie implements MouseListener{
      * @param matrGrilleRef variable nécessaire à la référence de la classe <code>MonPanelMap</code>.
      * @param fenMenuRef variable nécessaire à la référence de la classe <code>MonPanelMap</code>.
      * @param fenJeuRef variable nécessaire à la référence de la classe <code>MonPanelMap</code>.
-     * @param statRand variable nécessaire à la référence de la classe <code>MonPanelMap</code>.
+     * @param statDefRef variable nécessaire à la référence de la classe <code>MonPanelMap</code>.
      * @param jeuRef variable nécessaire à la référence de la classe <code>MonPanelMap</code>.
      * @param scoreRef variable nécessaire à la référence de la classe <code>MonPanelMap</code>.
      */
-    public SourisInterractionDefinie(int choixRef, ImageMap imageCarteRef, char[][] choixMapRef, ConfigMap confMap, MaMatrice matrGrilleRef, Fenetre fenMenuRef, MaFenetreJeu fenJeuRef, Boolean statDefRef, PanelJeu jeuRef, PanelScore scoreRef){
+    public SourisInterractionDefinie(int choixRef, ImageMap imageCarteRef, char[][] choixMapRef, ConfigMap confMap, 
+                                    MaMatrice matrGrilleRef, Fenetre fenMenuRef, MaFenetreJeu fenJeuRef, Boolean statDefRef, 
+                                    PanelJeu jeuRef, PanelScore scoreRef){
         this.choix = choixRef;
         this.imageCarte = imageCarteRef;
         this.choixMap = choixMapRef;

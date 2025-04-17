@@ -1,6 +1,9 @@
 import java.awt.event.*;
-import javax.swing.*;
-
+/**
+ * La classe <code>SourisInterractionAleatoire</code> est utilisé pour gérer les actions du bouton "Carte Aléatoire".
+ * @author Michel Tran 
+ * @version 1.1
+ */
 public class SourisInterractionAleatoire implements MouseListener{
 
     /** 
@@ -54,7 +57,7 @@ public class SourisInterractionAleatoire implements MouseListener{
     private PanelScore score;
     
     /**
-     * 
+     * Constructeur de la classe <code>SourisInterractionAleatoire</code> permet de faire le lien avec <code>MonPanelMap</code>.
      * @param choixRef variable nécessaire à la référence de la classe <code>MonPanelMap</code>.
      * @param imageCarteRef variable nécessaire à la référence de la classe <code>MonPanelMap</code>.
      * @param choixMapRef variable nécessaire à la référence de la classe <code>MonPanelMap</code>.

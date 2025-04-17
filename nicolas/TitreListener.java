@@ -21,7 +21,11 @@ public class TitreListener extends ComponentAdapter{
      */
     private int nouvelleTaille;
 
-
+    /**
+     * Constructeur de la classe <code>TitreListener</code> qui permet de gérer le lien avec les autres classes.
+     * @param titre référence à la classe <code>JLabel</code>
+     * @param pan référence à la classe <code>JPanel</code>
+     */
     public TitreListener(JLabel titre, JPanel pan) {
         super();
         this.pan=pan;

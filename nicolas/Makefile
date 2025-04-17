@@ -3,13 +3,13 @@ JCFLAGS = -encoding UTF-8 -implicit:none
 
 # Règles obligatoires :
 # Règles du menu 
-Menu.class: Menu.java  PanelScore.class Fenetre.class FenetreFin.class  MonPanelTitre.class MonPanelMap.class RejouerInterraction.class
+Menu.class: Menu.java  PanelScore.class Fenetre.class FenetreFin.class  MonPanelTitre.class MonPanelMap.class
 	javac ${JCFLAGS} Menu.java
 
 Fenetre.class: MonPanelTitre.class MonPanelMap.class
 	javac ${JCFLAGS} Fenetre.java
 
-FenetreFin.class: FenetreFin.java PanelScore.class PanelJeu.class RejouerInterraction.class Menu.class
+FenetreFin.class: FenetreFin.java PanelScore.class PanelJeu.class Menu.class
 	javac ${JCFLAGS} FenetreFin.java
 
 MaFenetreJeu.class: MaFenetreJeu.java PanelJeu.class PanelScore.class
@@ -35,9 +35,6 @@ ImageMap.class: ImageMap.java
 
 ConfigMap.class: ConfigMap.java
 	javac ${JCFLAGS} ConfigMap.java
-
-RejouerInterraction.class: RejouerInterraction.java Fenetre.class FenetreFin.class
-	javac ${JCFLAGS} RejouerInterraction.java
 
 # Règles du Jeu
 MaMatrice.class: MaMatrice.java ObjetGrille.class MouseInteraction.class PanelJeu.class PanelScore.class

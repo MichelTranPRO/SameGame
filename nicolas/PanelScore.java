@@ -1,7 +1,5 @@
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
 
 /**
@@ -53,6 +51,10 @@ public class PanelScore extends JPanel {
         }
     }   
 
+    /**
+     * Permet de recevoir la valeur de la variable score.
+     * @return la valeur de la variable score.
+     */
     public int getScore(){
         return score;
     }

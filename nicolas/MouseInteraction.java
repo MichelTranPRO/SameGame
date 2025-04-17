@@ -44,7 +44,7 @@ public class MouseInteraction implements MouseListener{
 		this.objAssoc=objAssoc;
 		this.matrice=matrice;
 		this.scoreRef=scorePanel;
-		this.fenFin = new FenetreFin(this.scoreRef);
+		this.fenFin = new FenetreFin();
 	}
 
 	/**
@@ -72,6 +72,7 @@ public class MouseInteraction implements MouseListener{
 		this.dernierVoisin = AlgoJeu.setSurvoleVoisin(temp, true);
 
 		if(AlgoJeu.partieFinie(this.matrice)){
+			fenFin.setScore(scoreRef.getScore());
 			this.fenFin.setVisible(true);
 		}
 	}
