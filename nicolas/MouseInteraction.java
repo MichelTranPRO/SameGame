@@ -23,6 +23,10 @@ public class MouseInteraction implements MouseListener{
 	*/
 	private PanelScore scoreRef;
 	/**
+	* Variable contenant une réference a la fenêtre de fin.
+	*/
+	private FenetreFin fenFin;
+	/**
 	* Variable contenant un tableau du dernir group de voisins visités.
 	* static car il n'y aura toujours qu'un seul groupe dernierement visité
 	*/
@@ -40,6 +44,7 @@ public class MouseInteraction implements MouseListener{
 		this.objAssoc=objAssoc;
 		this.matrice=matrice;
 		this.scoreRef=scorePanel;
+		this.fenFin = new FenetreFin(this.scoreRef);
 	}
 
 	/**
@@ -65,6 +70,10 @@ public class MouseInteraction implements MouseListener{
 		AlgoJeu.setSurvoleVoisin(this.dernierVoisin, false);
 		ObjetGrille[] temp = AlgoJeu.getVoisin(this.matrice, this.objAssoc.getMyY(), this.objAssoc.getMyX());
 		this.dernierVoisin = AlgoJeu.setSurvoleVoisin(temp, true);
+
+		if(AlgoJeu.partieFinie(this.matrice)){
+			this.fenFin.setVisible(true);
+		}
 	}
 
 	/**

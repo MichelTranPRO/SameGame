@@ -52,7 +52,7 @@ PanelJeu.class: PanelJeu.java
 PanelScore.class: PanelScore.java 
 	javac ${JCFLAGS} PanelScore.java
 
-MouseInteraction.class: MouseInteraction.java ObjetGrille.class AlgoJeu.class PanelScore.class
+MouseInteraction.class: MouseInteraction.java ObjetGrille.class AlgoJeu.class PanelScore.class FenetreFin.class
 	javac ${JCFLAGS} MouseInteraction.java
 
 AlgoJeu.class: AlgoJeu.java ObjetGrille.class

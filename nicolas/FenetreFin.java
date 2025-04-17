@@ -49,7 +49,6 @@ public class FenetreFin extends JFrame{
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setTitle("SameGame");
         this.setLayout(new BorderLayout());
-        this.setVisible(true);
 
         menu = new Menu();
         actionRejouer = new RejouerInterraction(this);

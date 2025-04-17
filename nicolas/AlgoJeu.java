@@ -3,7 +3,6 @@ import java.awt.*;
 /**
  * La classe <code>AlgoJeu</code> rassemble tous les algorithmes permettant le bon fonctionnement du jeu.
  * 
- *  
  * @version 1.1
  * @author Nicolas Miekisiak
  */
@@ -289,5 +288,34 @@ public class AlgoJeu{
 				}
 			}
 		}
+	}
+	/**
+	 * Renvoie true si la partie est finie, false sinon.
+	 * 
+	 * @param matrice la matrice de la partie en cours.
+	 * 
+	 * @return true si la partie est finie, false sinon.
+	 */
+	public static boolean partieFinie(ObjetGrille[][] matrice){
+		int longueurCol = matrice.length;
+		int longueurLigne = matrice[0].length;
+		for(int x=0; x<longueurLigne; x+=1){
+			for(int y=0; y<longueurCol; y+=1){
+				// si l'objet est vivant
+				if(matrice[y][x].getMyEtat()){
+					int nbObj=0;
+					ObjetGrille[] temp = AlgoJeu.getVoisin(matrice,y,x);
+					// on compte le nombre d'objet dedans
+					while(temp[nbObj]!=null){
+						nbObj+=1;
+					}
+					// si c'est un groupe
+					if(nbObj>1){
+						return false; 
+					}
+				}
+			}
+		}
+		return true; // il n'y a plus de groupe
 	}
 }
