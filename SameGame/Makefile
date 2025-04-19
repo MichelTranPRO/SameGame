@@ -40,9 +40,6 @@ ConfigMap.class: ConfigMap.java
 MaMatrice.class: MaMatrice.java ObjetGrille.class MouseInteraction.class PanelJeu.class PanelScore.class
 	javac ${JCFLAGS} MaMatrice.java
 
-MaFenetre.class: MaFenetre.java 
-	javac ${JCFLAGS} MaFenetre.java
-
 PanelJeu.class: PanelJeu.java 
 	javac ${JCFLAGS} PanelJeu.java
 
