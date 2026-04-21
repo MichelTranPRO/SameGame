@@ -1,4 +1,4 @@
-# SameGame 
+# SameGame 2025
 
 Notre projet **"SameGame"**, un jeu de réflexion et d'élimination de blocs. Ce projet a été réalisé dans le cadre de la **SAÉ 2.1** de l'IUT de Sénart-Fontainebleau.
 
